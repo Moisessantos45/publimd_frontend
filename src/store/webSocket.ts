@@ -10,16 +10,17 @@ export const useWebSocketStore = defineStore("webSocket", () => {
   const ws = ref<WebSocket | null>(null);
   const isConnected = ref(false);
   const error = ref<string | null>(null);
-  const url = ref(import.meta.env.VITE_API_WS);
+  //const url = ref(import.meta.env.VITE_API_WS);
 
   const currentVersion = ref<number>(0);
 
-  function connect(slug: string) {
-    if (ws.value) {
-      ws.value.close();
-    }
+  function buildWsUrl() {
+    const protocol = window.location.protocol === "https:" ? "wss:" : "ws:";
+    return `${protocol}//${window.location.host}/api/v1/ws/editor`;
+  }
 
-    ws.value = new WebSocket(`${url.value}/editor`);
+  function connect(slug: string) {
+    ws.value = new WebSocket(buildWsUrl());
 
     ws.value.onopen = () => {
       isConnected.value = true;
