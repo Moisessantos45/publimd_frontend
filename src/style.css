@@ -88,6 +88,11 @@ html, body, #app {
   -moz-osx-font-smoothing: grayscale;
 }
 
+html {
+  overflow-x: clip;
+}
+
+
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;

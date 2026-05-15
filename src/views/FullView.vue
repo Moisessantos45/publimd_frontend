@@ -9,8 +9,8 @@
     </svg>
     <span class="ml-2 font-inter text-body-sm">Cargando...</span>
   </div>
-  <div v-else class="min-h-screen flex flex-col bg-canvas-white text-slate-text font-inter px-5 sm:px-5">
-    <div class="md:max-w-3xl mx-auto w-full px-4 sm:px-8 pt-6 sm:pt-9 pb-2 not-prose">
+  <div v-else class="min-h-screen flex flex-col bg-canvas-white text-slate-text font-inter px-5 sm:px-5 overflow-x-hidden">
+    <div class="md:max-w-3xl mx-auto w-full min-w-0 px-4 sm:px-8 pt-6 sm:pt-9 pb-2 not-prose">
 
       <div v-if="postData.category" class="mb-4">
         <span
@@ -64,7 +64,7 @@
     </div>
 
     <div
-      class="md:max-w-3xl w-full mx-auto p-4 sm:p-8 prose prose-sm sm:prose-lg prose-a:text-forest-link prose-headings:text-midnight-pine prose-headings:font-pp-mori prose-p:text-slate-text prose-p:font-inter prose-li:text-slate-text prose-li:font-inter prose-strong:text-midnight-pine prose-blockquote:bg-midnight-pine/5 prose-blockquote:border-l-4 prose-blockquote:border-forest-link prose-blockquote:px-6 prose-blockquote:py-2 prose-blockquote:rounded-r-xl prose-blockquote:font-inter prose-blockquote:not-italic prose-blockquote:text-slate-text [&_pre]:bg-canvas-white [&_pre]:text-slate-text [&_pre]:border [&_pre]:border-light-gray-border [&_pre]:transition-colors [&_pre:hover]:border-forest-link [&_.hljs]:bg-transparent!"
+      class="md:max-w-3xl w-full mx-auto p-4 sm:p-8 min-w-0 overflow-x-hidden prose prose-sm sm:prose-lg wrap-break-word prose-a:text-forest-link prose-headings:text-midnight-pine prose-headings:font-pp-mori prose-p:text-slate-text prose-p:font-inter prose-li:text-slate-text prose-li:font-inter prose-strong:text-midnight-pine prose-blockquote:bg-midnight-pine/5 prose-blockquote:border-l-4 prose-blockquote:border-forest-link prose-blockquote:px-6 prose-blockquote:py-2 prose-blockquote:rounded-r-xl prose-blockquote:font-inter prose-blockquote:not-italic prose-blockquote:text-slate-text [&_pre]:max-w-full [&_pre]:overflow-x-auto [&_pre]:bg-canvas-white [&_pre]:text-slate-text [&_pre]:border [&_pre]:border-light-gray-border [&_pre]:transition-colors [&_pre:hover]:border-forest-link [&_code]:wrap-break-word [&_img]:max-w-full [&_img]:h-auto [&_svg]:max-w-full [&_iframe]:max-w-full [&_table]:block [&_table]:max-w-full [&_table]:overflow-x-auto [&_.hljs]:bg-transparent!"
       v-html="compiledMarkdown"></div>
   </div>
 </template>

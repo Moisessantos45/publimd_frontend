@@ -1,6 +1,6 @@
 <template>
   <div class="min-h-full flex flex-col bg-canvas-white text-slate-text font-inter p-4">
-    <section class="relative overflow-hidden border-b border-light-gray-border max-w-5xl mx-auto w-full">
+    <section class="relative overflow-hidden border-b border-light-gray-border sm:max-w-5xl mx-auto w-full">
       <div class="mx-auto w-full px-6 py-4 sm:py-20 flex flex-col items-center gap-10 animate-fade-in">
         <div class="flex flex-col gap-6 w-full items-stretch text-left">
           <div class="flex items-center justify-between gap-3 flex-wrap">
