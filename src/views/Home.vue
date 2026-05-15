@@ -3,12 +3,19 @@
     <section class="relative overflow-hidden border-b border-light-gray-border max-w-5xl mx-auto w-full">
       <div class="mx-auto w-full px-6 py-4 sm:py-20 flex flex-col items-center gap-10 animate-fade-in">
         <div class="flex flex-col gap-6 w-full items-stretch text-left">
-          <div class="flex items-center gap-3">
+          <div class="flex items-center justify-between gap-3 flex-wrap">
             <div
               class="inline-flex items-center gap-2 bg-transparent border border-forest-link rounded-circular px-4 py-1.5 text-forest-link text-[12px] sm:text-body-sm font-medium tracking-tight">
               <span class="w-2 h-2 rounded-circular bg-forest-link animate-pulse" />
               Edicion abierta a la comunidad
             </div>
+            <RouterLink
+              to="/login"
+              class="inline-flex items-center gap-2 rounded-circular border border-light-gray-border bg-canvas-white px-4 py-2 text-[12px] sm:text-body-sm font-medium text-midnight-pine transition-colors hover:border-forest-link hover:text-forest-link"
+            >
+              <LogIn :size="16" />
+              Iniciar sesión
+            </RouterLink>
           </div>
           <h1
             class="font-pp-mori font-bold text-[2.15rem] sm:text-heading lg:text-display leading-[0.98] sm:leading-[0.95] text-midnight-pine tracking-tight">
@@ -74,7 +81,7 @@
             class="font-pp-mori font-bold text-xl sm:text-[32px] leading-[1.15] sm:leading-heading-sm text-midnight-pine group-hover:text-forest-link transition-colors line-clamp-2">
             {{ post.title }}
           </h2>
-          <p class="font-inter text-sm sm:text-body-sm text-slate-text leading-[1.5] line-clamp-3">
+          <p class="font-inter text-sm sm:text-body-sm text-slate-text leading-normal line-clamp-3">
             {{ post.content }}
           </p>
           <div class="flex items-center justify-between mt-2 pt-4 border-t border-light-gray-border">
@@ -113,7 +120,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import { storeToRefs } from 'pinia'
-import { Search, Calendar, SearchX } from 'lucide-vue-next'
+import { Search, Calendar, SearchX, LogIn } from 'lucide-vue-next'
 import usePostStore from '@/store/post'
 import PageNavigator from '@/components/molecules/PageNavigator.vue'
 
