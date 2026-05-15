@@ -20,6 +20,10 @@ export const useWebSocketStore = defineStore("webSocket", () => {
   }
 
   function connect(slug: string) {
+    if (ws.value) {
+      ws.value.close();
+    }
+
     ws.value = new WebSocket(buildWsUrl());
 
     ws.value.onopen = () => {
