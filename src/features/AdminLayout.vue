@@ -4,7 +4,7 @@
         <LayoutAuth v-else-if="authenticated" :title="$route.meta.title || 'Admin'">
             <template #aside>
                 <div
-                    class="md:hidden flex items-center justify-between px-4 py-3 bg-canvas-white border-b border-light-gray-border z-30">
+                    class="md:hidden flex items-center justify-between sm:px-4 py-3 bg-canvas-white border-b border-light-gray-border z-30 px-5">
                     <span class="text-midnight-pine font-medium text-sm">Menú</span>
                     <button @click="sidebarOpen = true" class="text-midnight-pine hover:text-forest-link">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

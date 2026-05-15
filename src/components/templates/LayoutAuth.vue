@@ -4,7 +4,7 @@
         <slot name="aside" />
 
         <section class="flex-1 flex flex-col min-w-0 overflow-hidden relative">
-            <div class="h-14 flex items-center px-4 md:px-8 border-b border-light-gray-border bg-canvas-white">
+            <div class="h-14 flex items-center px-5 md:px-8 border-b border-light-gray-border bg-canvas-white">
                 <h1 class="text-midnight-pine font-semibold font-pp-mori text-lg">
                     {{ title }}</h1>
             </div>

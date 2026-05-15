@@ -2,7 +2,7 @@
     <div class="min-h-screen flex flex-col bg-canvas-white relative overflow-x-hidden">
         <Header />
 
-        <main class="grow flex flex-col items-center justify-center p-4 sm:p-6 relative z-10">
+        <main class="grow flex flex-col items-center justify-center px-5 sm:p-6 relative z-10">
             <div class="absolute inset-0 bg-canvas-white -z-10"></div>
             <div
                 class="absolute top-0 right-0 w-full lg:w-2/5 h-full bg-linear-to-bl from-outline-variant/25 to-transparent -z-10 rounded-bl-[8rem]">

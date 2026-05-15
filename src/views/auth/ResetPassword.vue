@@ -2,7 +2,7 @@
   <div class="min-h-screen flex flex-col bg-canvas-white">
     <Header />
 
-    <main class="grow flex items-center justify-center p-4 sm:p-6 lg:p-8">
+    <main class="grow flex items-center justify-center px-5 sm:p-6 lg:p-8">
       <div class="w-full max-w-md bg-canvas-white rounded-md shadow-sm border border-light-gray-border overflow-hidden p-2">
 
         <div class="px-6 pt-10 pb-8 text-center sm:px-10 shrink-0">

@@ -2,7 +2,7 @@
     <div class="min-h-screen flex flex-col bg-canvas-white relative overflow-x-hidden text-slate-text font-inter">
         <Header />
 
-        <main class="grow flex flex-col items-center justify-center p-4 sm:p-6 relative z-10">
+        <main class="grow flex flex-col items-center justify-center px-5 sm:p-6 relative z-10">
             <div class="absolute inset-0 bg-canvas-white -z-10"></div>
 
             <div

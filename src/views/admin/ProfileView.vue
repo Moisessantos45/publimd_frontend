@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-5xl mx-auto flex flex-col gap-8">
+  <div class="max-w-5xl mx-auto flex flex-col gap-8 sm:px-1 px-5 sm:py-1 py-5">
 
     <div class="flex items-center gap-6 pb-8 border-b border-light-gray-border">
       <div class="relative group">
@@ -40,7 +40,7 @@
           <div class="sm:col-span-2 flex flex-col gap-1.5">
             <label class="text-xs text-ash-gray uppercase tracking-wide font-medium">Bio</label>
             <textarea v-model="dataForm.bio"
-              class="bg-transparent border border-light-gray-border rounded-md px-3 py-2 text-slate-text text-sm outline-none transition-all duration-200 focus:border-forest-link/50 focus:ring-1 focus:ring-forest-link/10 min-h-20 resize-none placeholder:text-ash-gray/60">
+              class="bg-transparent border border-light-gray-border rounded-md px-3 py-2 text-slate-text text-sm outline-none transition-all duration-200 focus:border-forest-link/50 focus:ring-1 focus:ring-forest-link/10 sm:min-h-20 min-h-28 resize-none placeholder:text-ash-gray/60">
             </textarea>
           </div>
         </div>
@@ -85,14 +85,14 @@
   <div v-if="isAvatarModalOpen"
     class="fixed inset-0 z-50 flex items-center justify-center bg-midnight-pine/20 backdrop-blur-sm p-4">
     <div
-      class="bg-canvas-white border border-light-gray-border rounded-[20px] shadow-xl p-6 w-full max-w-md flex flex-col gap-5 relative">
+      class="bg-canvas-white border border-light-gray-border rounded-[20px] shadow-xl p-6 flex flex-wrap flex-col gap-5 relative sm:max-w-md w-11/12">
       <div class="flex justify-between items-center">
         <h3 class="text-lg font-medium text-midnight-pine font-pp-mori">Selecciona un Avatar</h3>
         <button @click="isAvatarModalOpen = false" class="text-ash-gray hover:text-midnight-pine transition-colors">
           <X :size="20" />
         </button>
       </div>
-      <div class="grid grid-cols-4 gap-4 max-h-64 p-1">
+      <div class="grid grid-cols-4 gap-4 p-1">
         <button v-for="(avatar, index) in avatars" :key="index" @click="selectAvatar(avatar)"
           class="w-16 h-16 mx-auto rounded-full overflow-hidden border-2 transition-all duration-200"
           :class="dataForm.avatar === avatar ? 'border-forest-link scale-110 shadow-[0_0_15px_rgba(3,152,97,0.3)]' : 'border-light-gray-border hover:border-forest-link/50 hover:scale-105'">

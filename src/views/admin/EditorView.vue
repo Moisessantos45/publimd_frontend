@@ -1,5 +1,5 @@
 <template>
-  <div class="h-full flex flex-col w-full">
+  <div class="h-full flex flex-col w-full sm:px-1 px-5 sm:py-1 py-5">
     <EditorHeader @save="handleClickSavePost" @open-full-view="openFullView" :isNewPost="isNewPost" />
 
     <div class="flex-1 flex flex-col md:flex-row min-h-0 w-full relative">

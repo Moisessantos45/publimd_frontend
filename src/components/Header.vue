@@ -1,5 +1,5 @@
 <template>
-    <header class="h-16 px-4 md:px-8 flex items-center justify-between bg-canvas-white/90 backdrop-blur-md border-b border-light-gray-border sticky top-0 z-50">
+    <header class="h-16 px-5 md:px-9 flex items-center justify-between bg-canvas-white/90 backdrop-blur-md border-b border-light-gray-border sticky top-0 z-50">
         <RouterLink to="/" class="flex items-center gap-2.5">
             <div class="w-7 h-7 rounded-md bg-forest-link/10 border border-forest-link/20 flex items-center justify-center transition-transform duration-200 hover:scale-110">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" class="w-4 h-4 text-forest-link">
@@ -9,7 +9,7 @@
             <h1 class="text-[14px] font-pp-mori font-bold tracking-wide text-midnight-pine select-none">publimd</h1>
         </RouterLink>
 
-        <div class="flex items-center gap-4">
+        <div class="flex items-center gap-5">
             <RouterLink to="/login" class="text-[13px] font-medium text-ash-gray hover:text-midnight-pine transition-colors">Iniciar sesión</RouterLink>
             <RouterLink to="/register" class="px-4 py-1.5 bg-transparent border border-forest-link text-forest-link text-[13px] font-medium rounded-md hover:bg-forest-link/10 transition-colors">Registrarse</RouterLink>
         </div>

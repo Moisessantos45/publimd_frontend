@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-6xl mx-auto flex flex-col gap-6">
+  <div class="max-w-6xl mx-auto flex flex-col gap-6 sm:px-1 px-5 sm:py-1 py-5">
     <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-end gap-4">
       <!-- <div class="flex items-center gap-3 w-full sm:w-auto">
         <div class="relative flex-1 sm:w-auto">
@@ -22,7 +22,8 @@
     </div>
 
     <div class="bg-canvas-white border border-light-gray-border rounded-[20px] overflow-hidden">
-      <table class="w-full text-left text-sm text-ash-gray">
+      <div class="w-full overflow-x-auto">
+        <table class="min-w-225 w-full text-left text-sm text-ash-gray">
         <thead
           class="bg-light-gray-border/20 text-xs uppercase tracking-wider text-ash-gray border-b border-light-gray-border font-inter font-semibold">
           <tr>
@@ -82,7 +83,8 @@
             </td>
           </tr>
         </tbody>
-      </table>
+        </table>
+      </div>
     </div>
 
     <PageNavigator v-if="paginatedPostGeneric.totalPages > 1" :total="paginatedPostGeneric.total"

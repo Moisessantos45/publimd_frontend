@@ -1,25 +1,29 @@
 <template>
-  <div class="max-w-6xl mx-auto flex flex-col gap-6">
-    <div class="flex items-center gap-4">
-      <RouterLink to="/admin/posts"
-        class="p-2 bg-canvas-white border border-light-gray-border rounded-circular text-ash-gray hover:text-midnight-pine hover:bg-light-gray-border/20 transition-colors shrink-0">
-        <ArrowLeft :size="18" />
-      </RouterLink>
-      <div>
-        <h1 class="text-xl font-semibold text-midnight-pine font-pp-mori">Colaboradores del Post</h1>
-        <p class="text-sm text-ash-gray mt-1">Gestiona los invitados y sus permisos para este post.</p>
-      </div>
-      <div class="ml-auto" v-if="postCollaborators.isAuthor || postCollaborators.permissionId > 2">
-        <button @click="isModalOpen = true"
-          :disabled="loading || (!postCollaborators.isAuthor && postCollaborators.permissionId <= 2)"
-          :class="['rounded-circular px-4 py-2 text-sm font-medium transition-colors flex items-center gap-2 shadow-sm', (loading || (!postCollaborators.isAuthor && postCollaborators.permissionId <= 2)) ? 'text-steel-border/50 cursor-not-allowed bg-light-gray-border/30 border border-light-gray-border' : 'bg-forest-link hover:bg-forest-link/90 text-white']">
-          <Plus :size="16" />
-          Agregar Usuario
-        </button>
+  <div class="max-w-6xl mx-auto flex flex-col gap-6 sm:px-1 px-5 sm:py-1 py-5">
+    <div class="rounded-[20px] border border-light-gray-border bg-canvas-white px-5 py-5 sm:px-6 sm:py-5 shadow-sm">
+      <div class="grid grid-cols-1 gap-4.5 sm:grid-cols-[auto_1fr_auto] sm:items-center">
+        <RouterLink to="/admin/posts"
+          class="inline-flex items-center gap-2 rounded-circular border border-light-gray-border bg-canvas-white px-3 py-2 text-sm font-medium text-ash-gray transition-colors hover:border-steel-border hover:text-midnight-pine hover:bg-light-gray-border/20 shrink-0 justify-self-start">
+          <ArrowLeft :size="16" />
+          <span>Volver</span>
+        </RouterLink>
+
+        <div class="min-w-0">
+          <p class="mt-1 text-sm text-ash-gray">Gestiona los invitados y sus permisos para este post.</p>
+        </div>
+
+        <div v-if="postCollaborators.isAuthor || postCollaborators.permissionId > 2" class="justify-self-start sm:justify-self-end">
+          <button @click="isModalOpen = true"
+            :disabled="loading || (!postCollaborators.isAuthor && postCollaborators.permissionId <= 2)"
+            :class="['inline-flex items-center justify-center gap-2 rounded-circular px-4 py-2 text-sm font-medium transition-colors shadow-sm min-w-[160px]', (loading || (!postCollaborators.isAuthor && postCollaborators.permissionId <= 2)) ? 'text-steel-border/50 cursor-not-allowed bg-light-gray-border/30 border border-light-gray-border' : 'bg-forest-link hover:bg-forest-link/90 text-white']">
+            <Plus :size="16" />
+            Agregar Usuario
+          </button>
+        </div>
       </div>
     </div>
 
-    <div class="bg-canvas-white border border-light-gray-border rounded-[20px] overflow-x-auto">
+    <div class="bg-canvas-white border border-light-gray-border rounded-md overflow-x-auto">
       <table class="w-full text-left text-sm text-ash-gray">
         <thead
           class="bg-light-gray-border/20 text-xs uppercase tracking-wider text-ash-gray border-b border-light-gray-border font-inter font-semibold">

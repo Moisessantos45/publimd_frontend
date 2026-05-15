@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-5xl mx-auto flex flex-col gap-6 md:gap-8">
+  <div class="max-w-5xl mx-auto flex flex-col gap-6 md:gap-8 sm:px-px px-5 sm:py-1 py-9">
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
       <div class="bg-canvas-white border border-light-gray-border rounded-[20px] p-4 flex items-center gap-4">
         <div class="w-10 h-10 rounded-circular flex items-center justify-center bg-forest-link/10 text-forest-link">

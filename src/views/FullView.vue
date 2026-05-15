@@ -1,5 +1,5 @@
 <template>
-  <div v-if="loading" class="min-h-screen flex items-center justify-center bg-canvas-white text-slate-text font-inter">
+  <div v-if="loading" class="min-h-screen flex items-center justify-center bg-canvas-white text-slate-text font-inter px-5">
     <svg class="animate-spin h-8 w-8 text-forest-link" xmlns="http://www.w3.org/2000/svg" fill="none"
       viewBox="0 0 24 24">
       <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
@@ -9,22 +9,22 @@
     </svg>
     <span class="ml-2 font-inter text-body-sm">Cargando...</span>
   </div>
-  <div v-else class="min-h-screen flex flex-col bg-canvas-white relative overflow-x-hidden text-slate-text font-inter">
-    <div class="max-w-3xl mx-auto w-full px-8 pt-12 pb-2 not-prose">
+  <div v-else class="min-h-screen flex flex-col bg-canvas-white relative overflow-x-hidden text-slate-text font-inter px-5 sm:px-5">
+    <div class="max-w-3xl mx-auto w-full px-4 sm:px-8 pt-6 sm:pt-9 pb-2 not-prose">
 
       <div v-if="postData.category" class="mb-4">
         <span
-          class="inline-flex bg-transparent border border-forest-link text-forest-link text-body-sm font-medium px-4 py-1.5 rounded-circular tracking-tight font-inter">
+          class="inline-flex bg-transparent border border-forest-link text-xs sm:text-body-sm font-medium px-4 py-1.5 rounded-circular tracking-tight font-inter">
           {{ postData.category }}
         </span>
       </div>
 
       <h1 v-if="postData.title"
-        class="font-pp-mori font-bold text-heading sm:text-display text-midnight-pine leading-[0.95] tracking-tight mb-8">
+        class="font-pp-mori font-bold text-4xl sm:text-heading lg:text-display text-midnight-pine leading-[0.98] sm:leading-[0.95] tracking-tight mb-6 sm:mb-8">
         {{ postData.title }}
       </h1>
 
-      <div class="flex flex-wrap items-center gap-3 font-inter text-body-sm text-ash-gray mb-6">
+      <div class="flex flex-wrap items-center gap-3 font-inter text-xs sm:text-body-sm text-ash-gray mb-5 sm:mb-6">
         <div v-if="authorName" class="flex items-center gap-2">
           <svg width="16" height="16" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="7" cy="5" r="2.5" stroke="currentColor" stroke-width="1.4" />
@@ -47,14 +47,14 @@
 
       <div v-if="postData.tags.length" class="flex flex-wrap gap-2 mb-8">
         <span v-for="tag in postData.tags" :key="tag"
-          class="inline-flex items-center px-3 py-1.5 rounded-circular text-body-sm font-medium bg-transparent text-ash-gray border border-steel-border font-inter">
+          class="inline-flex items-center px-3 py-1.5 rounded-circular text-xs sm:text-body-sm font-medium bg-transparent text-ash-gray border border-steel-border font-inter">
           #{{ tag }}
         </span>
       </div>
 
       <div class="border-t-[3px] border-light-gray-border mb-4"></div>
       <button v-if="slug" @click="goBack"
-        class="mt-2 flex items-center gap-2 text-ash-gray hover:text-midnight-pine transition-colors bg-transparent border border-light-gray-border hover:border-steel-border rounded-circular px-4 py-2 text-body-sm font-inter font-medium">
+        class="mt-2 flex items-center gap-2 text-ash-gray hover:text-midnight-pine transition-colors bg-transparent border border-light-gray-border hover:border-steel-border rounded-circular px-4 py-2 text-xs sm:text-body-sm font-inter font-medium">
         <svg width="16" height="16" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M8.5 3L5.5 6L8.5 9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"
             stroke-linejoin="round" />
@@ -64,7 +64,7 @@
     </div>
 
     <div
-      class="max-w-3xl mx-auto p-8 prose prose-lg prose-a:text-forest-link prose-headings:text-midnight-pine prose-headings:font-pp-mori prose-p:text-slate-text prose-p:font-inter prose-li:text-slate-text prose-li:font-inter prose-strong:text-midnight-pine prose-blockquote:bg-midnight-pine/5 prose-blockquote:border-l-4 prose-blockquote:border-forest-link prose-blockquote:px-6 prose-blockquote:py-2 prose-blockquote:rounded-r-xl prose-blockquote:font-inter prose-blockquote:not-italic prose-blockquote:text-slate-text [&_pre]:bg-canvas-white [&_pre]:text-slate-text [&_pre]:border [&_pre]:border-light-gray-border [&_pre]:transition-colors [&_pre:hover]:border-forest-link [&_.hljs]:bg-transparent!"
+      class="max-w-3xl mx-auto p-4 sm:p-8 prose prose-sm sm:prose-lg prose-a:text-forest-link prose-headings:text-midnight-pine prose-headings:font-pp-mori prose-p:text-slate-text prose-p:font-inter prose-li:text-slate-text prose-li:font-inter prose-strong:text-midnight-pine prose-blockquote:bg-midnight-pine/5 prose-blockquote:border-l-4 prose-blockquote:border-forest-link prose-blockquote:px-6 prose-blockquote:py-2 prose-blockquote:rounded-r-xl prose-blockquote:font-inter prose-blockquote:not-italic prose-blockquote:text-slate-text [&_pre]:bg-canvas-white [&_pre]:text-slate-text [&_pre]:border [&_pre]:border-light-gray-border [&_pre]:transition-colors [&_pre:hover]:border-forest-link [&_.hljs]:bg-transparent!"
       v-html="compiledMarkdown"></div>
   </div>
 </template>
