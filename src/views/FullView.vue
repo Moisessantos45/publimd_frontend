@@ -1,5 +1,5 @@
 <template>
-  <div v-if="loading" class="min-h-screen flex items-center justify-center bg-canvas-white text-slate-text font-inter px-5">
+  <div v-if="loading" class="min-h-screen flex items-center justify-center bg-canvas-white text-slate-text font-inter px-5 w-full">
     <svg class="animate-spin h-8 w-8 text-forest-link" xmlns="http://www.w3.org/2000/svg" fill="none"
       viewBox="0 0 24 24">
       <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
@@ -9,8 +9,8 @@
     </svg>
     <span class="ml-2 font-inter text-body-sm">Cargando...</span>
   </div>
-  <div v-else class="min-h-screen flex flex-col bg-canvas-white relative overflow-x-hidden text-slate-text font-inter px-5 sm:px-5">
-    <div class="max-w-3xl mx-auto w-full px-4 sm:px-8 pt-6 sm:pt-9 pb-2 not-prose">
+  <div v-else class="min-h-screen flex flex-col bg-canvas-white text-slate-text font-inter px-5 sm:px-5">
+    <div class="md:max-w-3xl mx-auto w-full px-4 sm:px-8 pt-6 sm:pt-9 pb-2 not-prose">
 
       <div v-if="postData.category" class="mb-4">
         <span
@@ -64,7 +64,7 @@
     </div>
 
     <div
-      class="max-w-3xl mx-auto p-4 sm:p-8 prose prose-sm sm:prose-lg prose-a:text-forest-link prose-headings:text-midnight-pine prose-headings:font-pp-mori prose-p:text-slate-text prose-p:font-inter prose-li:text-slate-text prose-li:font-inter prose-strong:text-midnight-pine prose-blockquote:bg-midnight-pine/5 prose-blockquote:border-l-4 prose-blockquote:border-forest-link prose-blockquote:px-6 prose-blockquote:py-2 prose-blockquote:rounded-r-xl prose-blockquote:font-inter prose-blockquote:not-italic prose-blockquote:text-slate-text [&_pre]:bg-canvas-white [&_pre]:text-slate-text [&_pre]:border [&_pre]:border-light-gray-border [&_pre]:transition-colors [&_pre:hover]:border-forest-link [&_.hljs]:bg-transparent!"
+      class="md:max-w-3xl w-full mx-auto p-4 sm:p-8 prose prose-sm sm:prose-lg prose-a:text-forest-link prose-headings:text-midnight-pine prose-headings:font-pp-mori prose-p:text-slate-text prose-p:font-inter prose-li:text-slate-text prose-li:font-inter prose-strong:text-midnight-pine prose-blockquote:bg-midnight-pine/5 prose-blockquote:border-l-4 prose-blockquote:border-forest-link prose-blockquote:px-6 prose-blockquote:py-2 prose-blockquote:rounded-r-xl prose-blockquote:font-inter prose-blockquote:not-italic prose-blockquote:text-slate-text [&_pre]:bg-canvas-white [&_pre]:text-slate-text [&_pre]:border [&_pre]:border-light-gray-border [&_pre]:transition-colors [&_pre:hover]:border-forest-link [&_.hljs]:bg-transparent!"
       v-html="compiledMarkdown"></div>
   </div>
 </template>
