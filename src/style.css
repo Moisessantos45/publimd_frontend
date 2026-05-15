@@ -1,0 +1,176 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+
+@theme {
+  --color-canvas-white: #fdf9f7;
+  --color-midnight-pine: #003f2e;
+  --color-forest-link: #039861;
+  --color-slate-text: #333333;
+  --color-ash-gray: #6e7673;
+  --color-steel-border: #a6a6a6;
+  --color-light-gray-border: #d6d6d6;
+
+  --color-primary: #003f2e;
+  --color-on-primary: #ffffff;
+  --color-primary-container: #e6f0eb;
+  --color-on-primary-container: #003f2e;
+  --color-accent: #039861;
+  --color-on-accent: #ffffff;
+  --color-accent-container: #d9f3e6;
+  --color-on-accent-container: #039861;
+  --color-secondary: #6e7673;
+  --color-on-secondary: #ffffff;
+  --color-secondary-container: #e8eae9;
+  --color-on-secondary-container: #333333;
+  --color-tertiary: #a6a6a6;
+  --color-on-tertiary: #ffffff;
+  --color-tertiary-container: #f0f0f0;
+  --color-on-tertiary-container: #333333;
+  --color-error: #ef4444;
+  --color-on-error: #ffffff;
+  --color-background: #fdf9f7;
+  --color-on-background: #333333;
+  --color-surface: #ffffff;
+  --color-on-surface: #333333;
+  --color-surface-variant: #fdf9f7;
+  --color-on-surface-variant: #6e7673;
+  --color-outline: #a6a6a6;
+  --color-outline-variant: #d6d6d6;
+  --color-inverse-primary: #fdf9f7;
+  --color-inverse-surface: #333333;
+  --color-inverse-on-surface: #fdf9f7;
+
+  --font-pp-mori: 'PP Mori', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-inter: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --text-body-sm: 16px;
+  --leading-body-sm: 1.4;
+  --tracking-body-sm: -0.48px;
+  --text-body: 18px;
+  --leading-body: 1.4;
+  --tracking-body: -0.54px;
+  --text-subheading: 20px;
+  --leading-subheading: 1.3;
+  --tracking-subheading: -0.6px;
+  --text-heading-sm: 23px;
+  --leading-heading-sm: 1.2;
+  --tracking-heading-sm: -0.69px;
+  --text-heading: 52px;
+  --leading-heading: 1;
+  --text-heading-lg: 64px;
+  --leading-heading-lg: 0.95;
+  --text-display: 66px;
+  --leading-display: 0.95;
+  --spacing-4: 4px;
+  --spacing-8: 8px;
+  --spacing-20: 20px;
+  --spacing-32: 32px;
+  --spacing-40: 40px;
+  --spacing-48: 48px;
+  --spacing-64: 64px;
+  --spacing-80: 80px;
+  --spacing-96: 96px;
+  --spacing-180: 180px;
+  --radius-full: 800px;
+  --radius-full-2: 9999px;
+
+  --breakpoint-ml: 56rem;
+}
+
+html, body, #app {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-background);
+  color: var(--color-on-background);
+  font-family: var(--font-inter, 'Inter', system-ui, -apple-system, sans-serif);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(166, 166, 166, 0.18);
+  border-radius: var(--radius-full, 100px);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(166, 166, 166, 0.32);
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(166, 166, 166, 0.18) transparent;
+}
+
+::selection {
+  background: rgba(3, 152, 97, 0.25);
+}
+
+*:focus-visible {
+  outline: 1.5px solid rgba(3, 152, 97, 0.5);
+  outline-offset: 1px;
+}
+
+.router-view-enter-active,
+.router-view-leave-active {
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+.router-view-enter-from {
+  opacity: 0;
+  transform: translateY(4px);
+}
+
+.router-view-leave-to {
+  opacity: 0;
+  transform: translateY(-4px);
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in-scale {
+  from { opacity: 0; transform: scale(0.97); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slide-in-left {
+  from { opacity: 0; transform: translateX(-8px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slide-in-right {
+  from { opacity: 0; transform: translateX(8px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.25s ease both;
+}
+
+.animate-fade-in-scale {
+  animation: fade-in-scale 0.2s ease both;
+}
+
+.animate-slide-left {
+  animation: slide-in-left 0.22s ease both;
+}
+
+.animate-slide-right {
+  animation: slide-in-right 0.22s ease both;
+}
