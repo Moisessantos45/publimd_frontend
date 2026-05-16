@@ -1,114 +1,173 @@
 <template>
-  <div class="min-h-full flex flex-col bg-canvas-white text-slate-text font-inter p-4">
-    <section class="relative overflow-hidden border-b border-light-gray-border sm:max-w-5xl mx-auto w-full">
-      <div class="mx-auto w-full px-6 py-4 sm:py-20 flex flex-col items-center gap-10 animate-fade-in">
-        <div class="flex flex-col gap-6 w-full items-stretch text-left">
-          <div class="flex items-center justify-between gap-3 flex-wrap">
-            <div
-              class="inline-flex items-center gap-2 bg-transparent border border-forest-link rounded-circular px-4 py-1.5 text-forest-link text-[12px] sm:text-body-sm font-medium tracking-tight">
-              <span class="w-2 h-2 rounded-circular bg-forest-link animate-pulse" />
-              Edicion abierta a la comunidad
-            </div>
-            <RouterLink
-              to="/login"
-              class="inline-flex items-center gap-2 rounded-circular border border-light-gray-border bg-canvas-white px-4 py-2 text-[12px] sm:text-body-sm font-medium text-midnight-pine transition-colors hover:border-forest-link hover:text-forest-link"
-            >
-              <LogIn :size="16" />
-              Iniciar sesión
-            </RouterLink>
+  <div class="min-h-full flex flex-col bg-canvas-white text-slate-text font-inter relative overflow-x-hidden">
+    <header aria-label="Cabecera principal"
+      class="w-full sm:max-w-6xl mx-auto px-6 py-5 flex items-center justify-between z-20 relative bg-canvas-white/80 backdrop-blur-md top-0 border-b border-light-gray-border/50">
+      <div class="flex items-center gap-8">
+        <div
+          class="flex items-center gap-2 text-midnight-pine font-bold text-xl sm:text-2xl font-pp-mori tracking-tight">
+          <Cloud class="w-7 h-7 sm:w-8 sm:h-8 text-midnight-pine fill-current" />
+          <span>Publimd</span>
+        </div>
+        <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-ash-gray font-inter">
+          <!-- <a href="#" class="hover:text-midnight-pine transition-colors">Noticias</a>
+          <a href="#" class="hover:text-midnight-pine transition-colors">FAQs</a> -->
+          <div class="flex items-center gap-1 hover:text-midnight-pine transition-colors cursor-pointer">
+            Desarrolladores
+            <ChevronDown class="w-4 h-4" />
           </div>
-          <h1
-            class="font-pp-mori font-bold text-[2.15rem] sm:text-heading lg:text-display leading-[0.98] sm:leading-[0.95] text-midnight-pine tracking-tight">
-            Encuentra articulos con
-            <br />
-            <span class="text-forest-link">criterio editorial</span>
-          </h1>
-          <p class="font-inter text-sm sm:text-body text-ash-gray leading-[1.55] sm:leading-subheading tracking-normal sm:tracking-subheading">
-            Busqueda clara y ordenada para lectores sin registro. Explora ideas, guias y analisis en una portada que
-            prioriza lo que realmente importa.
-          </p>
-          <div class="relative w-full mt-2">
-            <Search :size="20" class="absolute left-4 top-1/2 -translate-y-1/2 text-ash-gray" />
-            <input id="hero-search" v-model="searchQuery" type="text" placeholder="Buscar articulos, temas, autores..."
-              class="w-full bg-canvas-white border border-light-gray-border rounded-soft py-[16px] pl-12 pr-4 text-sm sm:text-body-sm text-midnight-pine placeholder:text-ash-gray outline-none focus:border-forest-link transition-colors"
-              @input="onSearch" />
-            <kbd
-              class="absolute right-4 top-1/2 -translate-y-1/2 hidden sm:inline-flex items-center gap-1 bg-transparent border border-steel-border rounded px-1.5 py-0.5 text-[12px] text-ash-gray font-inter">
-              ⌘K
-            </kbd>
-          </div>
-          <div class="flex flex-wrap items-center gap-2 pt-2">
-            <span class="text-[12px] sm:text-body-sm text-ash-gray">Lecturas destacadas:</span>
-            <span v-for="topic in quickTopics" :key="topic"
-              class="bg-transparent text-ash-gray border border-steel-border text-[12px] sm:text-body-sm px-3 py-0.5 rounded-circular font-inter">
-              {{ topic }}
-            </span>
-          </div>
+        </nav>
+      </div>
+      <div class="flex items-center gap-4 sm:gap-6">
+        <!-- <a href="#"
+          class="hidden sm:flex items-center gap-2 text-sm font-medium text-ash-gray hover:text-midnight-pine transition-colors font-inter">
+          <Headset class="w-4 h-4" />
+          Soporte
+        </a> -->
+        <RouterLink to="/register"
+          class="bg-[#12d39d] hover:bg-[#0fb889] text-white px-5 sm:px-6 py-2 sm:py-2.5 rounded-full text-sm font-medium transition-colors font-inter shadow-sm hover:shadow-md">
+          Crear cuenta
+        </RouterLink>
+      </div>
+    </header>
+
+    <section class="relative w-full flex flex-col items-center pt-20 pb-24 px-4 text-center z-10">
+      <div
+        class="absolute inset-0 pointer-events-none overflow-hidden flex items-center justify-center z-[-1] opacity-30">
+        <svg class="absolute w-[200%] sm:w-[150%] md:w-full max-w-none h-auto text-light-gray-border"
+          style="min-width: 1000px;" viewBox="0 0 1000 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="500" cy="500" r="150" stroke="currentColor" stroke-width="1" stroke-dasharray="4 4" />
+          <circle cx="500" cy="500" r="250" stroke="currentColor" stroke-width="1" stroke-dasharray="4 4" />
+          <circle cx="500" cy="500" r="350" stroke="currentColor" stroke-width="1" stroke-dasharray="4 4" />
+          <circle cx="500" cy="500" r="450" stroke="currentColor" stroke-width="1" stroke-dasharray="4 4" />
+          <circle cx="500" cy="500" r="550" stroke="currentColor" stroke-width="1" stroke-dasharray="4 4" />
+        </svg>
+      </div>
+
+      <div class="flex flex-col items-center max-w-4xl mx-auto animate-fade-in">
+        <div class="mb-8">
+          <Cloud class="w-20 h-20 sm:w-24 sm:h-24 text-midnight-pine fill-current" />
+        </div>
+
+        <h1
+          class="font-pp-mori font-bold text-4xl sm:text-5xl md:text-heading-lg text-midnight-pine tracking-tight leading-[1.1] mb-6">
+          Crea posts con Markdown
+          <br class="hidden sm:block" />
+          de forma sencilla y colaborativa
+        </h1>
+
+        <p class="font-inter text-base sm:text-xl text-ash-gray max-w-2xl mx-auto mb-10 leading-relaxed">
+          Escribe contenido en Markdown fácilmente, trabaja en equipo con otros colaboradores y publica tus posts en
+          tiempo real.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center gap-6 w-full sm:w-7/12 px-4 sm:px-0">
+          <RouterLink to="/login"
+            class="w-full flex items-center justify-center gap-2 bg-canvas-white border border-light-gray-border text-midnight-pine px-7 sm:px-8 py-3.5 rounded-full text-sm font-medium hover:border-ash-gray hover:bg-gray-50 transition-colors font-inter shadow-sm">
+            Iniciar sesión
+            <LogIn class="w-4 h-4 text-ash-gray" />
+          </RouterLink>
+          <RouterLink to="/register"
+            class="w-full flex items-center justify-center gap-2 bg-[#12d39d] hover:bg-[#0fb889] text-white px-7 sm:px-8 py-3.5 rounded-full text-sm font-medium transition-colors font-inter shadow-sm hover:shadow-md">
+            Empezar a escribir
+            <ArrowUpRight class="w-4 h-4 opacity-70" />
+          </RouterLink>
         </div>
       </div>
     </section>
 
-    <main class="flex-1 max-w-5xl mx-auto w-full px-5 sm:px-6 py-10 flex flex-col gap-8">
-      <div
-        class="flex flex-col sm:flex-row sm:items-end sm:justify-between border-b border-light-gray-border pb-4 gap-3">
+    <section class="w-full relative flex flex-col items-center">
+      <div class="w-full border-t border-dashed border-light-gray-border relative">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-canvas-white px-6">
+          <h2 class="text-xl sm:text-2xl font-bold text-midnight-pine font-pp-mori tracking-tight">Todo-en-uno Publimd
+          </h2>
+        </div>
+      </div>
+
+      <div class="w-full max-w-3xl mx-auto px-4 mt-16 mb-12 relative z-10">
+        <div
+          class="relative w-full shadow-sm hover:shadow-md transition-shadow duration-300 rounded-full bg-canvas-white">
+          <Search class="absolute left-6 top-1/2 -translate-y-1/2 text-ash-gray w-5 h-5" />
+          <input id="hero-search" v-model="searchQuery" type="text" placeholder="Buscar artículos, temas, autores..."
+            class="w-full bg-transparent border border-light-gray-border rounded-full py-4 sm:py-5 pl-14 pr-16 text-base text-midnight-pine placeholder:text-ash-gray outline-none focus:border-[#12d39d] focus:ring-1 focus:ring-[#12d39d] transition-all"
+            @input="onSearch" />
+          <kbd
+            class="absolute right-6 top-1/2 -translate-y-1/2 hidden sm:inline-flex items-center gap-1 bg-gray-50 border border-light-gray-border rounded-md px-2 py-1 text-xs text-ash-gray font-inter font-medium">
+            ⌘K
+          </kbd>
+        </div>
+        <div class="flex flex-wrap items-center justify-center gap-2 pt-6">
+          <span class="text-sm font-medium text-ash-gray mr-2">Lecturas destacadas:</span>
+          <span v-for="topic in quickTopics" :key="topic"
+            class="bg-canvas-white text-ash-gray border border-light-gray-border text-xs sm:text-sm px-4 py-1.5 rounded-full font-inter hover:border-[#12d39d] hover:text-[#12d39d] transition-colors cursor-pointer"
+            @click="searchQuery = topic; onSearch()">
+            {{ topic }}
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <main class="flex-1 max-w-5xl mx-auto w-full px-5 sm:px-6 pb-20 flex flex-col gap-8 relative z-10">
+      <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between pb-4 gap-3">
         <div class="flex flex-col gap-2">
-          <p class="font-pp-mori text-xl sm:text-heading-sm text-midnight-pine">Portada de articulos</p>
-          <p class="font-inter text-sm sm:text-body text-ash-gray leading-[1.55] sm:leading-subheading">
+          <h2 class="font-pp-mori text-2xl sm:text-3xl font-bold text-midnight-pine tracking-tight">Portada de artículos</h2>
+          <p class="font-inter text-sm sm:text-base text-ash-gray">
             <span v-if="searchQuery">
               Resultados para <span class="text-midnight-pine font-medium">"{{ searchQuery }}"</span> —
             </span>
-            <span class="text-midnight-pine font-medium">{{ paginated.total }}</span> articulos encontrados
+            <span class="text-midnight-pine font-medium">{{ paginated.total }}</span> artículos encontrados
           </p>
         </div>
-        <span class="font-inter text-[12px] sm:text-body-sm text-ash-gray">Pagina {{ paginated.page }} de {{ paginated.totalPages
-          }}</span>
+        <span class="font-inter text-xs sm:text-sm text-ash-gray bg-gray-50 px-3 py-1 rounded-full border border-light-gray-border">
+          Página {{ paginated.page }} de {{ paginated.totalPages }}
+        </span>
       </div>
 
-      <div v-if="postPublic.length > 0" class="flex flex-col gap-5 animate-fade-in">
+      <div v-if="postPublic.length > 0" class="flex flex-col gap-6 animate-fade-in" itemscope itemtype="https://schema.org/ItemList">
         <RouterLink v-for="post in postPublic" :key="post.id" :to="{ name: 'full-post', params: { slug: post.slug } }"
-          class="group relative bg-canvas-white border border-light-gray-border rounded-[20px] px-4.5 py-6 hover:border-forest-link transition-all duration-200 flex flex-col gap-4 no-underline">
+          itemprop="itemListElement" itemscope itemtype="https://schema.org/BlogPosting"
+          class="group relative bg-canvas-white border border-light-gray-border rounded-3xl p-6 sm:p-8 hover:border-[#12d39d] hover:shadow-md transition-all duration-300 flex flex-col gap-5 no-underline">
           <div class="flex items-center gap-2 flex-nowrap overflow-x-auto sm:flex-wrap sm:overflow-visible">
-            <span
-              class="bg-transparent text-forest-link border border-forest-link text-[11px] sm:text-body-sm font-medium px-2.5 sm:px-3 py-0.5 rounded-circular tracking-tight font-inter whitespace-nowrap">
+            <span itemprop="articleSection"
+              class="bg-[#12d39d]/10 text-[#0fb889] text-[11px] sm:text-xs font-semibold px-3 py-1 rounded-full tracking-wide font-inter whitespace-nowrap uppercase">
               {{ post.category || 'General' }}
             </span>
             <span v-for="tag in post.tags.slice(0, 3)" :key="tag"
-              class="bg-transparent text-ash-gray border border-steel-border text-[11px] sm:text-body-sm px-2.5 sm:px-3 py-0.5 rounded-circular font-inter whitespace-nowrap">
+              class="bg-gray-50 text-ash-gray border border-light-gray-border text-[11px] sm:text-xs px-3 py-1 rounded-full font-inter whitespace-nowrap">
               #{{ tag }}
             </span>
           </div>
-          <h2
-            class="font-pp-mori font-bold text-xl sm:text-[32px] leading-[1.15] sm:leading-heading-sm text-midnight-pine group-hover:text-forest-link transition-colors line-clamp-2">
+          <h3 itemprop="headline"
+            class="font-pp-mori font-bold text-2xl sm:text-3xl leading-tight text-midnight-pine group-hover:text-[#12d39d] transition-colors line-clamp-2 tracking-tight">
             {{ post.title }}
-          </h2>
-          <p class="font-inter text-sm sm:text-body-sm text-slate-text leading-normal line-clamp-3">
+          </h3>
+          <p itemprop="abstract" class="font-inter text-base text-ash-gray leading-relaxed line-clamp-3">
             {{ post.content }}
           </p>
-          <div class="flex items-center justify-between mt-2 pt-4 border-t border-light-gray-border">
-            <div class="flex items-center gap-3">
+          <div class="flex items-center justify-between mt-2 pt-5 border-t border-light-gray-border/50">
+            <div class="flex items-center gap-3" itemprop="author" itemscope itemtype="https://schema.org/Person">
               <div
-                class="w-8 h-8 rounded-circular border border-steel-border flex items-center justify-center text-[13px] text-midnight-pine font-medium uppercase">
+                class="w-9 h-9 rounded-full bg-gray-50 border border-light-gray-border flex items-center justify-center text-sm text-midnight-pine font-bold uppercase shadow-sm">
                 {{ post.author?.charAt(0) || '?' }}
               </div>
-              <span class="font-inter text-ash-gray text-[12px] sm:text-body-sm">{{ post.author || 'Anonimo' }}</span>
+              <span itemprop="name" class="font-inter text-midnight-pine font-medium text-sm">{{ post.author || 'Anónimo' }}</span>
             </div>
-            <div class="flex items-center gap-2 font-inter text-ash-gray text-[12px] sm:text-body-sm">
-              <Calendar :size="16" />
-              <span>{{ post.createdAt }}</span>
+            <div class="flex items-center gap-2 font-inter text-ash-gray text-sm">
+              <Calendar class="w-4 h-4" />
+              <span itemprop="datePublished">{{ post.createdAt }}</span>
             </div>
           </div>
         </RouterLink>
       </div>
 
-      <div v-else-if="!loading" class="flex flex-col items-center justify-center py-24 gap-6 animate-fade-in">
-        <div class="w-20 h-20 rounded-circular border border-light-gray-border flex items-center justify-center">
-          <SearchX :size="32" class="text-ash-gray" />
+      <div v-else-if="!loading" class="flex flex-col items-center justify-center py-24 gap-6 animate-fade-in bg-canvas-white border border-light-gray-border rounded-3xl">
+        <div class="w-20 h-20 rounded-full bg-gray-50 flex items-center justify-center">
+          <SearchX class="w-8 h-8 text-ash-gray" />
         </div>
-        <p class="font-inter text-ash-gray text-lg sm:text-subheading text-center leading-[1.35]">No encontramos articulos para esa busqueda.</p>
+        <p class="font-inter text-ash-gray text-lg sm:text-xl text-center leading-relaxed">No encontramos<br/>artículos para esa búsqueda.</p>
       </div>
 
-      <div v-if="loading" class="flex flex-col gap-5 animate-pulse">
-        <div v-for="i in 4" :key="i" class="bg-canvas-white border border-light-gray-border rounded-[20px] h-48" />
+      <div v-if="loading" class="flex flex-col gap-6 animate-pulse">
+        <div v-for="i in 4" :key="i" class="bg-canvas-white border border-light-gray-border rounded-3xl h-56" />
       </div>
 
       <PageNavigator v-if="paginated.totalPages > 1" :total="paginated.total" :page="paginated.page"
@@ -120,7 +179,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import { storeToRefs } from 'pinia'
-import { Search, Calendar, SearchX, LogIn } from 'lucide-vue-next'
+import { Search, Calendar, SearchX, Cloud, ChevronDown, LogIn, ArrowUpRight } from 'lucide-vue-next'
 import usePostStore from '@/store/post'
 import PageNavigator from '@/components/molecules/PageNavigator.vue'
 
@@ -152,6 +211,8 @@ const fetchPosts = async () => {
 }
 
 onMounted(() => {
+  document.title = "publimd — Editor Markdown en tiempo real";
+  document.querySelector('meta[name="description"]')?.setAttribute("content", "Sitio web para crear posts tipo blog usando contenido Markdown (MD). Permite trabajar con colaboradores y publicar en tiempo real.");
   fetchPosts()
 })
 </script>

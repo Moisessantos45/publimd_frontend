@@ -9,29 +9,29 @@
     </svg>
     <span class="ml-2 font-inter text-body-sm">Cargando...</span>
   </div>
-  <div v-else class="min-h-screen flex flex-col bg-canvas-white text-slate-text font-inter px-5 sm:px-5 overflow-x-hidden">
-    <div class="md:max-w-3xl mx-auto w-full min-w-0 px-4 sm:px-8 pt-6 sm:pt-9 pb-2 not-prose">
+  <article v-else itemscope itemtype="https://schema.org/BlogPosting" class="min-h-screen flex flex-col bg-canvas-white text-slate-text font-inter px-5 sm:px-5 overflow-x-hidden">
+    <header class="md:max-w-3xl mx-auto w-full min-w-0 px-4 sm:px-8 pt-6 sm:pt-9 pb-2 not-prose">
 
       <div v-if="postData.category" class="mb-4">
-        <span
+        <span itemprop="articleSection"
           class="inline-flex bg-transparent border border-forest-link text-xs sm:text-body-sm font-medium px-4 py-1.5 rounded-circular tracking-tight font-inter">
           {{ postData.category }}
         </span>
       </div>
 
-      <h1 v-if="postData.title"
+      <h1 v-if="postData.title" itemprop="headline"
         class="font-pp-mori font-bold text-4xl sm:text-heading lg:text-display text-midnight-pine leading-[0.98] sm:leading-[0.95] tracking-tight mb-6 sm:mb-8">
         {{ postData.title }}
       </h1>
 
       <div class="flex flex-wrap items-center gap-3 font-inter text-xs sm:text-body-sm text-ash-gray mb-5 sm:mb-6">
-        <div v-if="authorName" class="flex items-center gap-2">
+        <div v-if="authorName" class="flex items-center gap-2" itemprop="author" itemscope itemtype="https://schema.org/Person">
           <svg width="16" height="16" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="7" cy="5" r="2.5" stroke="currentColor" stroke-width="1.4" />
             <path d="M2 12c0-2.21 2.239-4 5-4s5 1.79 5 4" stroke="currentColor" stroke-width="1.4"
               stroke-linecap="round" />
           </svg>
-          <span class="text-ash-gray">{{ authorName }}</span>
+          <span itemprop="name" class="text-ash-gray">{{ authorName }}</span>
         </div>
 
         <span v-if="authorName && formattedDate" class="w-px h-4 bg-steel-border"></span>
@@ -41,7 +41,7 @@
             <rect x="1.5" y="2.5" width="11" height="10" rx="1.5" stroke="currentColor" stroke-width="1.4" />
             <path d="M1.5 5.5h11M4.5 1v3M9.5 1v3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" />
           </svg>
-          <span>{{ formattedDate }}</span>
+          <span itemprop="datePublished">{{ formattedDate }}</span>
         </div>
       </div>
 
@@ -61,12 +61,12 @@
         </svg>
         <span>Regresar</span>
       </button>
-    </div>
+    </header>
 
-    <div
+    <div itemprop="articleBody"
       class="md:max-w-3xl w-full mx-auto p-4 sm:p-8 min-w-0 overflow-x-hidden prose prose-sm sm:prose-lg wrap-break-word prose-a:text-forest-link prose-headings:text-midnight-pine prose-headings:font-pp-mori prose-p:text-slate-text prose-p:font-inter prose-li:text-slate-text prose-li:font-inter prose-strong:text-midnight-pine prose-blockquote:bg-midnight-pine/5 prose-blockquote:border-l-4 prose-blockquote:border-forest-link prose-blockquote:px-6 prose-blockquote:py-2 prose-blockquote:rounded-r-xl prose-blockquote:font-inter prose-blockquote:not-italic prose-blockquote:text-slate-text [&_pre]:max-w-full [&_pre]:overflow-x-auto [&_pre]:bg-canvas-white [&_pre]:text-slate-text [&_pre]:border [&_pre]:border-light-gray-border [&_pre]:transition-colors [&_pre:hover]:border-forest-link [&_code]:wrap-break-word [&_img]:max-w-full [&_img]:h-auto [&_svg]:max-w-full [&_iframe]:max-w-full [&_table]:block [&_table]:max-w-full [&_table]:overflow-x-auto [&_.hljs]:bg-transparent!"
       v-html="compiledMarkdown"></div>
-  </div>
+  </article>
 </template>
 
 <script setup lang="ts">
@@ -74,7 +74,7 @@ import { computed, onMounted, onBeforeUnmount } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { storeToRefs } from 'pinia'
 import usePostStore from '@/store/post'
-import { renderMarkdown, useMermaid } from '../utils/markdown'
+import { renderMarkdown } from '../utils/markdown'
 
 const route = useRoute()
 const router = useRouter()
@@ -116,7 +116,7 @@ const formattedDate = computed(() => {
   return new Date(raw).toLocaleDateString('es-MX', { year: 'numeric', month: 'long', day: 'numeric' })
 })
 
-useMermaid(compiledMarkdown)
+
 
 const previewChannel = new BroadcastChannel('publimd:preview')
 

@@ -1,5 +1,9 @@
 <template>
-  <div class="h-full flex flex-col w-full sm:px-1 px-5 sm:py-1 py-5">
+  <div class="h-full flex flex-col w-full sm:px-1 px-5 sm:py-1 py-5 relative">
+    <div v-if="loading" class="absolute inset-0 flex items-center justify-center bg-canvas-white/50 z-20">
+      <Loading />
+    </div>
+
     <EditorHeader @save="handleClickSavePost" @open-full-view="openFullView" :isNewPost="isNewPost" />
 
     <div class="flex-1 flex flex-col md:flex-row min-h-0 w-full relative">
@@ -47,9 +51,10 @@ import { Eye, Download, ImageDown } from 'lucide-vue-next'
 import usePostStore from '@/store/post'
 import useMarkdownExportStore from '@/store/markdownExport'
 import useWebSocketStore from '@/store/webSocket'
-import { renderMarkdown, useMermaid } from '@/utils/markdown'
+import { renderMarkdown } from '@/utils/markdown'
 import EditorHeader from '@/features/components/EditorHeader.vue'
 import EditorPanel from '@/features/components/EditorPanel.vue'
+import Loading from '@/components/molecules/Loading.vue'
 
 const router = useRouter()
 const route = useRoute()
@@ -63,7 +68,7 @@ let dragging = false
 const exportStore = useMarkdownExportStore()
 const postStore = usePostStore()
 const webSocketStore = useWebSocketStore()
-const { dataForm, alertMessage } = storeToRefs(postStore)
+const { dataForm, alertMessage, loading } = storeToRefs(postStore)
 
 const isNewPost = computed(() => {
   return !route.query.slug || dataForm.value.id === -1;
@@ -120,8 +125,6 @@ const broadcastContent = () => {
 const compiledMarkdown = computed(() => {
   return renderMarkdown(dataForm.value.content)
 })
-
-useMermaid(compiledMarkdown)
 
 watch(() => dataForm.value.content, () => {
   broadcastContent()

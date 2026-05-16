@@ -1,10 +1,8 @@
 import { marked } from "marked";
 import { markedHighlight } from "marked-highlight";
-import hljs from "highlight.js";
+import hljs from "highlight.js/lib/common";
 import DOMPurify from "dompurify";
 import markedKatex from "marked-katex-extension";
-import mermaid from "mermaid";
-import { watch, nextTick, onMounted, type Ref } from "vue";
 
 import "highlight.js/styles/atom-one-light.css";
 import "katex/dist/katex.min.css";
@@ -21,26 +19,14 @@ marked.use(
   }),
 );
 
-marked.use({
-  renderer: {
-    code({ text, lang }) {
-      if (lang === "mermaid") {
-        const escapedText = text
-          .replace(/&/g, "&amp;")
-          .replace(/</g, "&lt;")
-          .replace(/>/g, "&gt;");
-        return `<div class="mermaid">${escapedText}</div>`;
-      }
-      return false;
-    },
-  },
-});
+
 
 export function renderMarkdown(content: string): string {
   const parsed = marked.parse(content);
   if (typeof parsed !== "string") {
     throw new Error("Error al parsear el markdown");
   }
+
   return DOMPurify.sanitize(parsed, {
     ADD_TAGS: [
       "math",
@@ -127,24 +113,3 @@ export function renderMarkdown(content: string): string {
   });
 }
 
-export function useMermaid(sourceRef: Ref<string>) {
-  onMounted(() => {
-    mermaid.initialize({ startOnLoad: false, theme: "default" });
-  });
-
-  watch(
-    sourceRef,
-    async () => {
-      await nextTick();
-      try {
-        const mermaids = document.querySelectorAll(".mermaid");
-        if (mermaids.length > 0) {
-          await mermaid.run({ querySelector: ".mermaid" });
-        }
-      } catch (e) {
-        //console.error('Mermaid render error:', e)
-      }
-    },
-    { immediate: true },
-  );
-}

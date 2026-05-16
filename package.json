@@ -21,7 +21,6 @@
     "marked": "^18.0.3",
     "marked-highlight": "^2.2.4",
     "marked-katex-extension": "^5.1.8",
-    "mermaid": "^11.14.0",
     "pinia": "^3.0.4",
     "tailwindcss": "^4.2.4",
     "vue": "^3.5.32",

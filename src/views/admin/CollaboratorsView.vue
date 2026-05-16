@@ -9,10 +9,13 @@
         </RouterLink>
 
         <div class="min-w-0">
-          <p class="mt-1 text-sm text-ash-gray">Gestiona los invitados y sus permisos para este post.</p>
+          <p class="mt-1 text-sm text-ash-gray">
+            Gestiona los invitados y sus permisos para este post.
+          </p>
         </div>
 
-        <div v-if="postCollaborators.isAuthor || postCollaborators.permissionId > 2" class="justify-self-start sm:justify-self-end">
+        <div v-if="postCollaborators.isAuthor || postCollaborators.permissionId > 2"
+          class="justify-self-start sm:justify-self-end">
           <button @click="isModalOpen = true"
             :disabled="loading || (!postCollaborators.isAuthor && postCollaborators.permissionId <= 2)"
             :class="['inline-flex items-center justify-center gap-2 rounded-circular px-4 py-2 text-sm font-medium transition-colors shadow-sm min-w-[160px]', (loading || (!postCollaborators.isAuthor && postCollaborators.permissionId <= 2)) ? 'text-steel-border/50 cursor-not-allowed bg-light-gray-border/30 border border-light-gray-border' : 'bg-forest-link hover:bg-forest-link/90 text-white']">
