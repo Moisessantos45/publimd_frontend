@@ -34,6 +34,7 @@
 import CollaboratorAvatars from './CollaboratorAvatars.vue'
 import usePostStore from '@/store/post'
 import { storeToRefs } from 'pinia'
+import { ArrowLeft } from 'lucide-vue-next'
 
 defineProps<{
   isNewPost: boolean;

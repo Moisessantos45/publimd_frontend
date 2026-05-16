@@ -109,7 +109,8 @@
     <main class="flex-1 max-w-5xl mx-auto w-full px-5 sm:px-6 pb-20 flex flex-col gap-8 relative z-10">
       <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between pb-4 gap-3">
         <div class="flex flex-col gap-2">
-          <h2 class="font-pp-mori text-2xl sm:text-3xl font-bold text-midnight-pine tracking-tight">Portada de artículos</h2>
+          <h2 class="font-pp-mori text-2xl sm:text-3xl font-bold text-midnight-pine tracking-tight">Portada de artículos
+          </h2>
           <p class="font-inter text-sm sm:text-base text-ash-gray">
             <span v-if="searchQuery">
               Resultados para <span class="text-midnight-pine font-medium">"{{ searchQuery }}"</span> —
@@ -117,12 +118,14 @@
             <span class="text-midnight-pine font-medium">{{ paginated.total }}</span> artículos encontrados
           </p>
         </div>
-        <span class="font-inter text-xs sm:text-sm text-ash-gray bg-gray-50 px-3 py-1 rounded-full border border-light-gray-border">
+        <span
+          class="font-inter text-xs sm:text-sm text-ash-gray bg-gray-50 px-3 py-1 rounded-full border border-light-gray-border">
           Página {{ paginated.page }} de {{ paginated.totalPages }}
         </span>
       </div>
 
-      <div v-if="postPublic.length > 0" class="flex flex-col gap-6 animate-fade-in" itemscope itemtype="https://schema.org/ItemList">
+      <div v-if="postPublic.length > 0" class="flex flex-col gap-6 animate-fade-in" itemscope
+        itemtype="https://schema.org/ItemList">
         <RouterLink v-for="post in postPublic" :key="post.id" :to="{ name: 'full-post', params: { slug: post.slug } }"
           itemprop="itemListElement" itemscope itemtype="https://schema.org/BlogPosting"
           class="group relative bg-canvas-white border border-light-gray-border rounded-3xl p-6 sm:p-8 hover:border-[#12d39d] hover:shadow-md transition-all duration-300 flex flex-col gap-5 no-underline">
@@ -137,8 +140,8 @@
             </span>
           </div>
           <h3 itemprop="headline"
-            class="font-pp-mori font-bold text-2xl sm:text-3xl leading-tight text-midnight-pine group-hover:text-[#12d39d] transition-colors line-clamp-2 tracking-tight">
-            {{ post.title }}
+            class="font-pp-mori font-bold text-2xl leading-tight text-midnight-pine group-hover:text-[#12d39d] transition-colors line-clamp-2 tracking-tight">
+            {{ post.title.toUpperCase() }}
           </h3>
           <p itemprop="abstract" class="font-inter text-base text-ash-gray leading-relaxed line-clamp-3">
             {{ post.content }}
@@ -149,7 +152,8 @@
                 class="w-9 h-9 rounded-full bg-gray-50 border border-light-gray-border flex items-center justify-center text-sm text-midnight-pine font-bold uppercase shadow-sm">
                 {{ post.author?.charAt(0) || '?' }}
               </div>
-              <span itemprop="name" class="font-inter text-midnight-pine font-medium text-sm">{{ post.author || 'Anónimo' }}</span>
+              <span itemprop="name" class="font-inter text-midnight-pine font-medium text-sm">{{ post.author ||
+                'Anónimo' }}</span>
             </div>
             <div class="flex items-center gap-2 font-inter text-ash-gray text-sm">
               <Calendar class="w-4 h-4" />
@@ -159,11 +163,13 @@
         </RouterLink>
       </div>
 
-      <div v-else-if="!loading" class="flex flex-col items-center justify-center py-24 gap-6 animate-fade-in bg-canvas-white border border-light-gray-border rounded-3xl">
+      <div v-else-if="!loading"
+        class="flex flex-col items-center justify-center py-24 gap-6 animate-fade-in bg-canvas-white border border-light-gray-border rounded-3xl">
         <div class="w-20 h-20 rounded-full bg-gray-50 flex items-center justify-center">
           <SearchX class="w-8 h-8 text-ash-gray" />
         </div>
-        <p class="font-inter text-ash-gray text-lg sm:text-xl text-center leading-relaxed">No encontramos<br/>artículos para esa búsqueda.</p>
+        <p class="font-inter text-ash-gray text-lg sm:text-xl text-center leading-relaxed">No encontramos<br />artículos
+          para esa búsqueda.</p>
       </div>
 
       <div v-if="loading" class="flex flex-col gap-6 animate-pulse">
